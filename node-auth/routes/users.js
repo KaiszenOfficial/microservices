@@ -1,7 +1,7 @@
 const express = require("express");
 const router  = express.Router();
 
-const { validateAuthToken } = require("../utils/auth-manager");
+const { validateAuthToken } = require("../utils/authManager");
 
 router.use(validateAuthToken);
 

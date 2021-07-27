@@ -7,7 +7,7 @@ const config         = require("config");
 const { v4: uuidv4 } = require("uuid");
 
 const User                  = require("../models/User");
-const { generateAuthToken } = require("../utils/auth-manager");
+const { generateAuthToken } = require("../utils/authManager");
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
