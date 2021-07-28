@@ -1,10 +1,9 @@
-const debug          = require("debug")("node-auth:auth");
-const express        = require("express");
-const router         = express.Router();
-const _              = require("lodash");
-const shortid        = require("shortid");
-const config         = require("config");
-const { v4: uuidv4 } = require("uuid");
+const debug   = require("debug")("node-auth:auth");
+const express = require("express");
+const router  = express.Router();
+const _       = require("lodash");
+const shortid = require("shortid");
+const config  = require("config");
 
 const User                  = require("../models/User");
 const { generateAuthToken } = require("../utils/authManager");
@@ -49,11 +48,10 @@ router.post("/register", async (req, res) => {
     }
 
     user = new User({
-      userId: uuidv4(),
       firstName,
       lastName,
       username: _.isEmpty(username)
-        ? [firstName, shortid.generate()].join("#")
+        ? [firstName, shortid.generate()].join(".")
         : username,
       email,
       password,

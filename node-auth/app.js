@@ -21,4 +21,9 @@ app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/users", usersRouter);
 
+/** catch 404 and forward to error handler */
+app.use("*", (req, res) => {
+  return res.formatter.notFound("Invalid API Endpoint");
+});
+
 module.exports = app;
