@@ -23,7 +23,7 @@ app.use("/users", usersRouter);
 
 /** catch 404 and forward to error handler */
 app.use("*", (req, res) => {
-  return res.formatter.notFound("Invalid API Endpoint");
+  return res.formatter.notFound("Invalid path");
 });
 
 module.exports = app;

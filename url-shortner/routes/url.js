@@ -8,9 +8,13 @@ const Url      = require("../models/Url");
 
 router.post("/shorten", async (req, res) => {
   const { longUrl } = req.body;
-
+  debug(longUrl);
   if (!longUrl || !validUrl.isUri(longUrl)) {
-    return res.status(400).json("Please provide a valid URL.").end();
+    return res.formatter.badRequest("Please provide a valid URL.", {
+      timestamp: new Date(),
+      code: "INAVLID_URL",
+      path: req.path,
+    });
   }
 
   try {
@@ -27,11 +31,15 @@ router.post("/shorten", async (req, res) => {
 
       await url.save();
 
-      return res.status(200).json(url).end();
+      return res.formatter.ok(url);
     }
   } catch (error) {
     debug(error);
-    return res.status(500).json(error).end();
+    res.formatter.badRequest(error.message || error.toString(), {
+      timestamp: new Date(),
+      code: "INTTERNAL_SERVER_ERROR",
+      path: req.path,
+    });
   }
 });
 
