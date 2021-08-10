@@ -1,0 +1,32 @@
+{
+  "name": "node-fileupload",
+  "version": "0.0.0",
+  "private": true,
+  "description": "A file upload service using NodeJS (Express), MongoDB and GridFS",
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "set DEBUG=node-fileupload:* & nodemon ./bin/www"
+  },
+  "dependencies": {
+    "config": "^3.3.6",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "express-response-formatter": "^2.0.2",
+    "gridfs-stream": "^1.1.1",
+    "http-errors": "~1.6.3",
+    "lodash": "^4.17.21",
+    "mongoose": "^5.13.6",
+    "morgan": "~1.9.1",
+    "multer": "^1.4.3",
+    "multer-gridfs-storage": "^5.0.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "author": {
+    "name": "Supratik Roy"
+  }
+}
