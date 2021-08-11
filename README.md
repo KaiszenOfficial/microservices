@@ -5,13 +5,13 @@
 ### Included projects are
 - ### Node Auth
 	**_Description_**
-	> The basic idea of this project is to implement a simple SignIn/SignUp process and understand how authentication works.
+	> The basic idea of this project is to implement a simple Login/Registration process and understand how authentication works.
 
 	**_Key features_**
 	- Setting up basic Express server.
 	- Using mongoose to establish database connection [[Mongoose Documentation](https://mongoosejs.com/)].
 	- Creating a basic User model to store user information.
-	- Working with JsonWebTokens. Creating, signing and verifying a jwt token.
+	- Working with JsonWebTokens - creating, signing and verifying a jsonwebtoken.
 
 - ### URL Shortener
 	**_Description_**
