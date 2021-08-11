@@ -38,6 +38,7 @@ router.post("/single", multerStorage.single("attachment"), async (req, res) => {
     await file.save();
     return res.formatter.ok({ file });
   } catch (error) {
+    debug(error);
     return res.formatter.badRequest(error.message || error.toString());
   }
 });
@@ -68,12 +69,12 @@ router.get("/:filename", async (req, res) => {
   }
 
   try {
-	let { filename } = req.params;
-	let file = await File.findOne({ filename });
+    let { filename } = req.params;
+    let file = await File.findOne({ filename });
 
-	if(_.isEmpty(file)) {
-	  throw new Error("File not found");
-	}
+    if(_.isEmpty(file)) {
+      throw new Error("File not found");
+    }
 
     let stream = gridFsBucket.openDownloadStreamByName(filename);
     stream.read();
