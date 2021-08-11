@@ -1,7 +1,7 @@
 {
   "name": "node-auth",
   "version": "0.0.0",
-  "description": "Node JS Authentication microservice.",
+  "description": "The basic idea of this project is to implement a simple Login/Registration process and understand how authentication works.",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
@@ -13,6 +13,7 @@
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
+    "ejs": "^3.1.6",
     "express": "~4.16.1",
     "express-response-formatter": "^2.0.2",
     "jsonwebtoken": "^8.5.1",

@@ -1,10 +1,17 @@
-var express = require('express');
-var router  = express.Router();
+const express = require('express');
+const router  = express.Router();
+
+const pjson = require("../package.json");
 
 const Url = require("../models/Url");
 
 router.get("/", (req, res) => {
-  return res.render("index");
+  return res.render("index", {
+    name: pjson.name,
+    version: pjson.version,
+    description: pjson.description,
+    author: pjson.author,
+  });
 });
 
 router.get("/:code", async (req, res) => {
