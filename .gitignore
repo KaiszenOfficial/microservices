@@ -1,7 +1,11 @@
 # ignore node_modules
 /node-auth/node_modules
 /url-shortner/node_modules
+/node-mail/node_modules
+/node-fileupload/node_modules
 
 # ignore config files
 /node-auth/config
 /url-shortner/config
+/node-mail/config
+/node-fileupload/config

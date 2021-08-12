@@ -22,11 +22,14 @@
 
 <body>
   <div class="container">
-    <div class="px-4 py-5 my-5 text-center">
+    <div class="px-4 py-5 mt-5 text-center">
       <img class="d-block mx-auto mb-4" src="images/logo.png" alt="" width="72" height="57">
       <h1 class="display-5 fw-bold"><%= displayName %></h1>
-      <div class="col-lg-6 mx-auto">
-        <div class="alert" role="alert" id="alert-div">
+      <p class="lead"><%= description %></p>
+    </div>
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="alert text-center" role="alert" id="alert-div">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
             class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img"
             aria-label="Warning:">
@@ -37,16 +40,17 @@
             
           </div>
         </div>
-        <p class="lead mb-4"><%= description %></p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
           <input type="text" class="form-control form-control-sm" id="longUrl">
-          <button type="button" class="btn btn-outline-secondary btn-sm px-4" id="shortenBtn">Shorten</button>
+          <button type="button" class="btn btn-outline-dark btn-sm px-4" id="shortenBtn">Shorten</button>
         </div>
       </div>
-      <div class="col-lg-6 mx-auto my-5" id="info-box">
+    </div>
+    <div class="row">
+      <div class="col-md-6 offset-md-3" id="info-box">
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
           <input class="form-control form-control-sm" readonly id="shortUrl">
-          <button type="button" class="btn btn-outline-secondary btn-sm px-4" id="copyBtn">
+          <button type="button" class="btn btn-outline-dark btn-sm px-4" id="copyBtn">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
               <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
               <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>

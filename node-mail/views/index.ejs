@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= displayName %></title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/stylesheets/bootstrap/bootstrap.css" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/bootstrap/bootstrap.bundle.js"></script>
+    <script src="/javascripts/bootstrap/bootstrap.js"></script>
+  </head>
+  <body>
+    <div class="container">
+
+      <div class="px-4 py-5 mt-5 text-center">
+        <img class="d-block mx-auto mb-4" src="logo.png" alt="" height="128">
+        <h1 class="display-5 fw-bold"><%= displayName %></h1>
+        <p class="lead">
+          <%= description %>
+        </p>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-6 offset-md-3 justify-content-center text-center">
+          <input type="text" name="" id="subject" class="form-control form-control-sm mb-3" placeholder="Subject">
+
+          <select class="form-select form-select-sm mb-3" aria-label="Default select example" id="contentType">
+            <option selected disabled>Content Type</option>
+            <option value="TEXT">Text</option>
+            <option value="HTML">HTML</option>
+          </select>
+          <textarea type="text" name="" id="content" class="form-control form-control-sm mb-3" rows="10" placeholder="Content"></textarea>
+          <button class="btn btn-sm btn-custom" id="sendBtn"><img src="favicon-32x32.png"> <span class="fw-bold text-dark">Send</span></button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/javascripts/script.js" defer></script>
+  </body>
+</html>
