@@ -6,8 +6,8 @@ const pjson   = require("../package.json");
 /* GET home page. */
 router.get("/", (req, res) => {
   return res.render("index", {
+    displayName: pjson.displayName,
     version: pjson.version,
-    name: pjson.name,
     description: pjson.description,
     author: pjson.author,
   });

@@ -1,11 +1,12 @@
 {
   "name": "url-shortner",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
+  "displayName": "NodeJS URL Shortener",
   "description": "The basic idea of this project is to implement an URL shortening service similar to Bitly",
   "scripts": {
     "start": "node ./bin/www",
-    "dev:windows": "set DEBUG=url-shortner:* && nodemon ./bin/www"
+    "dev:windows": "set DEBUG=url-shortner:* & nodemon ./bin/www"
   },
   "dependencies": {
     "config": "^3.3.6",

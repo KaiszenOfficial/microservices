@@ -1,6 +1,7 @@
 {
   "name": "node-auth",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "displayName": "NodeJS Authentication Service",
   "description": "The basic idea of this project is to implement a simple Login/Registration process and understand how authentication works.",
   "private": true,
   "scripts": {
@@ -27,7 +28,6 @@
     "nodemon": "^2.0.12"
   },
   "author": {
-    "name": "Supratik Roy",
-    "email": "supratik1992@gmail.com"
+    "name": "Supratik Roy"
   }
 }

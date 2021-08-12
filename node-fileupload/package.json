@@ -2,10 +2,11 @@
   "name": "node-fileupload",
   "version": "0.0.0",
   "private": true,
+  "displayName": "NodeJS File Upload Service",
   "description": "The basic idea of this project is to implement a file upload service to store files in MongoDB using GridFS",
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "set DEBUG=node-fileupload:* & nodemon ./bin/www"
+    "dev:windows": "set DEBUG=node-fileupload:* & nodemon ./bin/www"
   },
   "dependencies": {
     "config": "^3.3.6",

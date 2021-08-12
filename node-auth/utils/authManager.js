@@ -33,7 +33,7 @@ exports.validateAuthToken = (req, res, next) => {
       code: config.get("ERROR_CODES").MISSING_TOKEN,
     });
 
-  jwt.verify(token, secret, async (err, decoded) => {
+  jwt.verify(token, JWT_SECRET, async (err, decoded) => {
     if (err) {
       debug(err);
       if(err instanceof jwt.TokenExpiredError){

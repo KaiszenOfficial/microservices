@@ -7,7 +7,7 @@ const Url = require("../models/Url");
 
 router.get("/", (req, res) => {
   return res.render("index", {
-    name: pjson.name,
+    displayName: pjson.displayName,
     version: pjson.version,
     description: pjson.description,
     author: pjson.author,
