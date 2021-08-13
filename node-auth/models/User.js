@@ -7,9 +7,11 @@ const SALT_ROUNDS = config.get("SALT_ROUNDS")
 
 const userSchema = new mongoose.Schema(
   {
+    _id: String,
     userId: {
       type: String,
-      default: () => uuidv4().replace(/\-/g, ""),
+      unique: true,
+      index: true,
     },
     firstName: {
       type: String,
@@ -22,6 +24,7 @@ const userSchema = new mongoose.Schema(
     username: {
       type: String,
       unique: true,
+      index: true,
     },
     email: {
       type: String,
@@ -35,14 +38,15 @@ const userSchema = new mongoose.Schema(
         },
         message: (props) => `${props.value} is not a valid email address.`,
       },
+      index: true,
     },
     password: {
       type: String,
       min: [6, "Password must be minimum 6 characters long."],
       required: [true, "Password is required."],
     },
-    createdAt: { type: String, default: Date.now },
-    updatedAt: { type: String, default: Date.now },
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: { type: Date, default: Date.now },
   },
   {
     toObject: {
@@ -73,7 +77,8 @@ userSchema.pre("save", function (next) {
     const SALT    = bcrypt.genSaltSync(SALT_ROUNDS);
     const pwdHash = bcrypt.hashSync(this.password, SALT);
 
-    this.password = pwdHash;
+    this.password  = pwdHash;
+    this.userId    = this._id       = uuidv4().replace(/\-/g, "");
     this.createdAt = this.updatedAt = new Date();
     next();
   } catch (error) {
