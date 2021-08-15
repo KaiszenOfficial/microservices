@@ -1,12 +1,9 @@
-const debug    = require("debug")("node-fileupload:files");
-const express  = require('express');
-const router   = express.Router();
+const debug    = require("debug")("node-fileupload:files-controller");
 const config   = require("config");
 const mongoose = require("mongoose");
 const _        = require("lodash");
 
-const multerStorage = require("../config/storage");
-const File          = require("../models/File");
+const File = require("../models/File");
 
 const DB_URI      = config.get("MONGO_URI");
 const BUCKET_NAME = config.get("BUCKET_NAME");
@@ -20,12 +17,13 @@ const connection = mongoose.createConnection(DB_URI, {
 let gridFsBucket;
 
 connection.once("open", () => {
-  gridFsBucket = new mongoose.mongo.GridFSBucket(connection.db, { bucketName: BUCKET_NAME });
+  gridFsBucket = new mongoose.mongo.GridFSBucket(connection.db, {
+    bucketName: BUCKET_NAME,
+  });
 });
 
-router.post("/single", multerStorage.single("attachment"), async (req, res) => {
+const uploadSingleFile = async (req, res) => {
   try {
-    debug(req.file);
     let { id, filename, bucketName, contentType } = req.file;
     let file = new File({
       fileId: id,
@@ -41,29 +39,27 @@ router.post("/single", multerStorage.single("attachment"), async (req, res) => {
     debug(error);
     return res.formatter.badRequest(error.message || error.toString());
   }
-});
+};
 
-router.post("/multiple", multerStorage.array("attachments", 4), async (req, res) => {
-    try {
-      debug(req.file);
-      let { id, filename, bucketName, contentType } = req.file;
-      let file = new File({
-        fileId: id,
-        filename,
-        contentType,
-        bucketName,
-        createdAt: new Date(),
-      });
+const uploadMultipleFiles = async (req, res) => {
+  try {
+    let { id, filename, bucketName, contentType } = req.file;
+    let file = new File({
+      fileId: id,
+      filename,
+      contentType,
+      bucketName,
+      createdAt: new Date(),
+    });
 
-      await file.save();
-      return res.formatter.ok({ file });
-    } catch (error) {
-      return res.formatter.badRequest(error.message || error.toString());
-    }
+    await file.save();
+    return res.formatter.ok({ file });
+  } catch (error) {
+    return res.formatter.badRequest(error.message || error.toString());
   }
-);
+};
 
-router.get("/:filename", async (req, res) => {
+const getFileByFilename = async (req, res) => {
   if (!gridFsBucket) {
     return res.formatter.serverError("DB connection not available");
   }
@@ -72,7 +68,7 @@ router.get("/:filename", async (req, res) => {
     let { filename } = req.params;
     let file = await File.findOne({ filename });
 
-    if(_.isEmpty(file)) {
+    if (_.isEmpty(file)) {
       throw new Error("File not found");
     }
 
@@ -95,6 +91,6 @@ router.get("/:filename", async (req, res) => {
   } catch (error) {
     return res.formatter.badRequest(error.message || error.toString());
   }
-});
+};
 
-module.exports = router;
+module.exports = { uploadSingleFile, uploadMultipleFiles, getFileByFilename }

@@ -1,6 +1,4 @@
-const debug   = require("debug")("node-auth:auth");
-const express = require("express");
-const router  = express.Router();
+const debug   = require("debug")("node-auth:auth-controller");
 const _       = require("lodash");
 const shortid = require("shortid");
 const config  = require("config");
@@ -8,7 +6,7 @@ const config  = require("config");
 const User                  = require("../models/User");
 const { generateAuthToken } = require("../utils/authManager");
 
-router.post("/login", async (req, res) => {
+const login = async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -47,9 +45,9 @@ router.post("/login", async (req, res) => {
       path: req.path,
     });
   }
-});
+};
 
-router.post("/register", async (req, res) => {
+const register = async (req, res) => {
   const { firstName, lastName, username, email, password } = req.body;
 
   try {
@@ -84,6 +82,6 @@ router.post("/register", async (req, res) => {
       path: req.path,
     });
   }
-});
+};
 
-module.exports = router;
+module.exports = { login, register }

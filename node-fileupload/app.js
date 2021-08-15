@@ -5,8 +5,8 @@ const logger               = require("morgan");
 const cors                 = require("cors");
 const { responseEnhancer } = require("express-response-formatter");
 
-const indexRouter = require("./routes/index");
-const fileRouter  = require("./routes/files");
+const indexRouter = require("./routes/index.routes");
+const fileRouter  = require("./routes/file.routes");
 
 const app = express();
 

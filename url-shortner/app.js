@@ -4,8 +4,8 @@ const cookieParser         = require("cookie-parser");
 const logger               = require("morgan");
 const { responseEnhancer } = require("express-response-formatter");
 
-const indexRouter = require("./routes/index");
-const urlRouter   = require("./routes/url");
+const indexRouter = require("./routes/index.routes");
+const urlRouter   = require("./routes/url.routes");
 
 const app = express();
 

@@ -1,12 +1,9 @@
-const debug   = require("debug")("url-shortner:url")
-const express = require("express");
-const router  = express.Router();
-
+const debug   = require("debug")("url-shortner:url-controller")
 const shortid  = require("shortid");
 const validUrl = require("valid-url");
 const Url      = require("../models/Url");
 
-router.post("/shorten", async (req, res) => {
+const shortenUrl = async (req, res) => {
   const { longUrl } = req.body;
   debug(longUrl);
   if (!longUrl || !validUrl.isUri(longUrl)) {
@@ -23,9 +20,11 @@ router.post("/shorten", async (req, res) => {
     if (url) {
       return res.status(200).json(url).end();
     } else {
-      const baseUrl = req.protocol + "://" + req.get("host");
+      const baseUrl = req.protocol + "://" + req.get("host") + "/url";
+      debug(baseUrl);
       const urlCode = shortid.generate();
       const shortUrl = new URL(urlCode, baseUrl);
+      debug(shortUrl);
 
       url = new Url({ urlCode, longUrl, shortUrl, date: new Date() });
 
@@ -41,6 +40,22 @@ router.post("/shorten", async (req, res) => {
       path: req.path,
     });
   }
-});
+};
 
-module.exports = router;
+const getUrlByCode = async (req, res) => {
+  let { code: urlCode } = req.params;
+
+  try {
+    const url = await Url.findOne({ urlCode });
+
+    if (!url) {
+      return res.status(404).json("No URL Found.").end();
+    }
+
+    res.redirect(url.longUrl);
+  } catch (error) {
+    return res.status(500).json(error).end();
+  }
+};
+
+module.exports = { shortenUrl, getUrlByCode }

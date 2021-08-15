@@ -5,9 +5,9 @@ const logger               = require('morgan');
 const cors                 = require("cors");
 const { responseEnhancer } = require("express-response-formatter");
 
-const indexRouter = require('./routes/index');
-const authRouter  = require("./routes/auth");
-const usersRouter = require('./routes/users');
+const indexRouter = require('./routes/index.routes');
+const authRouter  = require("./routes/auth.routes");
+const usersRouter = require('./routes/user.routes');
 
 const app = express();
 

@@ -1,12 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@400;700&display=swap');
 
-body {
+html, body {
   margin: 0;
   padding: 0;
   font-family: 'Baloo Chettan 2', cursive !important;
-  background-color: rgb(174, 187, 205);
+  background-color: #282c34;
+  color: #fff;
 }
 
 a {
-  color: #00B7FF;
+  color: #61dafb;
+}
+
+.accordion-item {
+  background-color: #282c34 !important;
+  color: #fff !important;
+  border: 1px solid #fff;
 }
