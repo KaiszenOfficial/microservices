@@ -50,7 +50,7 @@ document.getElementById("shortenBtn").addEventListener("click", async (e) => {
   }
 });
 
-document.getElementById("copyBtn").addEventListener("click", (e) => {
+document.getElementById("shortUrl").addEventListener("click", (e) => {
   e.preventDefault();
 
   /* Get the text field */

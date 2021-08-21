@@ -2,9 +2,9 @@ const debug  = require("debug")("node-auth:auth-manager");
 const jwt    = require("jsonwebtoken");
 const config = require("config");
 
-const JWT_SECRET    = config.get("JWT_SECRET");
+const JWT_SECRET     = config.get("JWT_SECRET");
 const JWT_EXPIRES_IN = config.get("JWT_EXPIRES_IN");
-const JWT_ISSUER    = config.get("JWT_ISSUER");
+const JWT_ISSUER     = config.get("JWT_ISSUER");
 
 const User = require("../models/User");
 
@@ -37,7 +37,7 @@ exports.validateAuthToken = (req, res, next) => {
     if (err) {
       debug(err);
       if(err instanceof jwt.TokenExpiredError){
-        return res.formatter.unauthorized(err.toString(), {
+        return res.formatter.unauthorized("Authorization token expired", {
           code: config.get("ERROR_CODES").UNAUTHORIZED,
         });
       }

@@ -1,19 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@400;700&display=swap');
 
 html, body {
   margin: 0;
   padding: 0;
-  font-family: 'Baloo Chettan 2', cursive !important;
+  font-family: 'Fira Mono', monospace !important;
   background-color: #282c34;
   color: #fff;
 }
 
 a {
-  color: #61dafb;
+  color: #61afef;
 }
 
-.accordion-item {
-  background-color: #282c34 !important;
-  color: #fff !important;
-  border: 1px solid #fff;
+a:hover {
+  color: #56b6c2;
+}
+
+hr {
+  background-color: #abb2bf;
+}
+
+code {
+  color: #c8c8c8;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Baloo Chettan 2', cursive !important;
+}
+
+.form-control {
+	border: none;
+	border-bottom: 1px solid #61afef;
+	background-color: transparent;
+	color: #fff;
+	border-radius: 0;
+  padding: 10px;
+}
+
+.form-control:focus {
+	box-shadow: none;
+	border: none;
+	border-bottom: 1px solid #61afef;
+	background-color: transparent;
+	color: #fff;
+  box-shadow: 0 3px #61afef;
+	transition: all .25s linear;
+}
+
+.code {
+  letter-spacing: 0.8px;
+  font-family: 'Fira Mono' !important;
+  font-size: 0.85rem;
+  color: #e5c07b;
+}
+
+.tab {
+  margin-left: 30px;
+}
+.tab-inner {
+  margin-left: 60px;
+}
+
+.key {
+  color: #e06c75;
+}
+
+.value {
+  color: #98c379;
 }

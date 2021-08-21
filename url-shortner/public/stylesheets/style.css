@@ -9,5 +9,36 @@ html, body {
 }
 
 a {
-  color: #61dafb;
+  color: #61afef;
+}
+
+a:hover {
+  color: #56b6c2;
+}
+
+hr {
+  background-color: #abb2bf;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.form-control, .form-control:read-only {
+	border: none;
+	border-bottom: 1px solid #61afef;
+	background-color: transparent;
+	color: #fff;
+	border-radius: 0;
+  padding: 10px;
+}
+
+.form-control:focus {
+	box-shadow: none;
+	border: none;
+	border-bottom: 1px solid #61afef;
+	background-color: transparent;
+	color: #fff;
+  box-shadow: 0 3px #61afef;
+	transition: all .25s linear;
 }

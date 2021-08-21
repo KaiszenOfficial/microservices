@@ -23,228 +23,128 @@
       </p>
     </div>
 
-    <div class="row col-md-6 offset-md-3">
-      <div class="accordion" id="accordionFlushExample">
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="flush-headingOne">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-              <span class="lead me-2">[POST]</span> Login Success
-            </button>
-          </h2>
-          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-            data-bs-parent="#accordionFlushExample">
-            <div class="accordion-body">
-              <div class="col">
-                <p class="fw-bold">cURL</p>
-                <code>
-                  curl --location --request POST 'http://localhost:8080/auth/login' \
-                  --header 'Content-Type: application/json' \
-                  --data-raw '{
-                      "email": "JeffreyDBolin@armyspy.com",
-                      "password": "1S$f8D6vDkP-"
-                  }'
-                </code>
-              </div>
-              <hr>
-              <div class="col">
-                <p class="fw-bold">REQUEST</p>
-                <code>
-                  {
-                    "email": "JeffreyDBolin@armyspy.com",
-                    "password": "1S$f8D6vDkP-"
-                  }
-                </code>
-              </div>
-              <hr>
-              <div class="col">
-                <p class="fw-bold">RESPONSE</p>
-                <code>
-                  {
-                    "data": {
-                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJKZWZmcmV5IiwibGFzdE5hbWUiOiJCb2xpbiIsInVzZXJuYW1lIjoiSmVmZnJleS5UQUI0UzA0Vm0iLCJlbWFpbCI6IkplZmZyZXlEQm9saW5AYXJteXNweS5jb20iLCJpYXQiOjE2Mjg2NzYxNTcsImV4cCI6MTYyODc2MjU1NywiYXVkIjoiNWUxMWYzYWUxZWM4NGZhMThmYzM4ODViZDRiODNhNDkiLCJpc3MiOiJub2RlLmF1dGgifQ.mxoTyQt7TeyO2Y_bdeJ9capDtr67lLIcltZVMcwRkjM",
-                      "user": {
-                        "firstName": "Jeffrey",
-                        "lastName": "Bolin",
-                        "username": "Jeffrey.TAB4S04Vm",
-                        "email": "JeffreyDBolin@armyspy.com",
-                        "userId": "5e11f3ae1ec84fa18fc3885bd4b83a49",
-                        "createdAt": "Thu Jul 29 2021 13:52:23 GMT+0530 (India Standard Time)",
-                        "updatedAt": "Thu Jul 29 2021 13:52:23 GMT+0530 (India Standard Time)"
-                      }
-                    }
-                  }
-                </code>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="flush-headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-              <span class="lead me-2">[POST]</span> Login Failure
-            </button>
-          </h2>
-          <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
-            data-bs-parent="#accordionFlushExample">
-            <div class="accordion-body">
-              <div class="col">
-                <p class="fw-bold">cURL</p>
-                <code>
-                  curl --location --request POST 'http://localhost:8080/auth/login' \
-                  --header 'Content-Type: application/json' \
-                  --data-raw '{
-                      "email": "JeffreyDBolin@armyspy.com",
-                      "password": "wrongpassword"
-                  }'
-                </code>
-              </div>
-              <hr>
-              <div class="col">
-                <p class="fw-bold">REQUEST</p>
-                <code>
-                  {
-                    "email": "JeffreyDBolin@armyspy.com",
-                    "password": "wrongpassword"
-                  }
-                </code>
-              </div>
-              <hr>
-              <div class="col">
-                <p class="fw-bold">RESPONSE</p>
-                <code>
-                  {
-                    "error": "Invalid credentials.",
-                    "meta": {
-                      "timestamp": "2021-08-11T10:43:49.868Z",
-                      "code": "USER_NOT_FOUND",
-                      "path": "/login"
-                    }
-                  }
-                </code>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="flush-headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-              <span class="lead me-2">[POST]</span> Register Success
-            </button>
-          </h2>
-          <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
-            data-bs-parent="#accordionFlushExample">
-            <div class="accordion-body">
-              <div class="col">
-                <p class="fw-bold">cURL</p>
-                <code>
-                  curl --location --request POST 'http://localhost:8080/auth/register' \
-                  --header 'Content-Type: application/json' \
-                  --data-raw '{
-                      "firstName": "Royce",
-                      "lastName": "Jones",
-                      "username": null,
-                      "email": "RoycePJones@rhyta.com",
-                      "password": "1S$f8D6vDkP-"
-                  }'
-                </code>
-              </div>
-              <hr>
-              <div class="col">
-                <p class="fw-bold">REQUEST</p>
-                <code>
-                  {
-                    "firstName": "Royce",
-                    "lastName": "Jones",
-                    "username": null,
-                    "email": "RoycePJones@rhyta.com",
-                    "password": "1S$f8D6vDkP-"
-                  }
-                </code>
-              </div>
-              <hr>
-              <div class="col">
-                <p class="fw-bold">RESPONSE</p>
-                <code>
-                  {
-                    "data": {
-                      "user": {
-                        "firstName": "Royce",
-                        "lastName": "Jones",
-                        "username": "Royce.KXbg20Wtt",
-                        "email": "RoycePJones@rhyta.com",
-                        "userId": "ea4803da27984b16838cd6dff4d0fb62",
-                        "createdAt": "Wed Aug 11 2021 16:43:11 GMT+0530 (India Standard Time)",
-                        "updatedAt": "Wed Aug 11 2021 16:43:11 GMT+0530 (India Standard Time)"
-                      }
-                    }
-                  }
-                </code>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="flush-headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-              <span class="lead me-2">[POST]</span> Register Failure
-            </button>
-          </h2>
-          <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
-            data-bs-parent="#accordionFlushExample">
-            <div class="accordion-body">
-              <div class="col">
-                <p class="fw-bold">cURL</p>
-                <code>
-                  curl --location --request POST 'http://localhost:8080/auth/register' \
-                  --header 'Content-Type: application/json' \
-                  --data-raw '{
-                      "firstName": "Royce",
-                      "lastName": "Jones",
-                      "username": null,
-                      "email": "RoycePJones@rhyta.com",
-                      "password": "1S$f8D6vDkP-"
-                  }'
-                </code>
-              </div>
-              <hr>
-              <div class="col">
-                <p class="fw-bold">REQUEST</p>
-                <code>
-                  {
-                    "firstName": "Kenneth",
-                    "lastName": "Cameron",
-                    "username": null,
-                    "email": null,
-                    "password": "1S$f8D6vDkP-"
-                  }
-                </code>
-              </div>
-              <hr>
-              <div class="col">
-                <p class="fw-bold">RESPONSE</p>
-                <code>
-                  {
-                    "error": "User validation failed: email: Email name is required.",
-                    "meta": {
-                      "timestamp": "2021-08-11T11:16:38.731Z",
-                      "code": "INTERNAL_SERVER_ERROR",
-                      "path": "/register"
-                    }
-                  }
-                </code>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-2">
+        <p class="h4">Register</p>
+        <hr>
+        <p>
+          <a href="javascript:void(0)">/auth/register</a>
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="h4">cURL</p>
+        <hr>
+        <p class="code">curl --location --request POST 'http://localhost:8080/auth/register' \<br>
+          --header 'Content-Type: application/json' \<br>
+          --data-raw '{<br>
+          <span class="tab">"firstName": "Royce",</span><br>
+          <span class="tab">"lastName": "Jones",</span><br>
+          <span class="tab">"username": null,</span><br>
+          <span class="tab">"email": "RoycePJones@rhyta.com"</span>,<br>
+          <span class="tab">"password": "Royce@12345"</span><br>
+          }'
+        </p>
+        <p class="h4">Request</p>
+        <hr>
+        <p class="code">
+          {<br>
+          <span class="tab"><span class="key">"firstName"</span>: <span class="value">"Royce"</span>,</span><br>
+          <span class="tab"><span class="key">"lastName"</span>: <span class="value">"Jones"</span>,</span><br>
+          <span class="tab"><span class="key">"username"</span>: <span class="value">null</span>,</span><br>
+          <span class="tab"><span class="key">"email"</span>: <span class="value">"RoycePJones@rhyta.com"</span></span>,<br>
+          <span class="tab"><span class="key">"password"</span>: <span class="value">"Royce@12345"</span></span><br>
+          }
+        </p>
+        <p class="h4">Response</p>
+        <hr>
+        <p class="code">
+          {<br>
+            <span class="tab"><span class="key">"user"</span>: {</span><br>
+              <span class="tab-inner"><span class="key">"firstName"</span>: <span class="value">"Royce"</span>,</span><br>
+              <span class="tab-inner"><span class="key">"lastName"</span>: <span class="value">"Jones"</span>,</span><br>
+              <span class="tab-inner"><span class="key">"username"</span>: <span class="value">"Royce.2jsbi4mXU"</span>,</span><br>
+              <span class="tab-inner"><span class="key">"email"</span>: <span class="value">"RoycePJones@rhyta.com"</span>,</span><br>
+              <span class="tab-inner"><span class="key">"createdAt"</span>: <span class="value">"2021-08-21T03:36:57.194Z"</span>,</span><br>
+              <span class="tab-inner"><span class="key">"updatedAt"</span>: <span class="value">"2021-08-21T03:36:57.194Z"</span>,</span><br>
+              <span class="tab-inner"><span class="key">"userId"</span>: <span class="value">"fc29f70179a54c3e8c5f61852242c2de"</span></span><br>
+            <span class="tab">}</span><br>
+          }
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <p class="h4">Try yourself</p>
+        <hr>
+        <form id="registerForm">
+          <input type="text" class="form-control mb-3" placeholder="First name here..." id="firstName" required>
+          <input type="text" class="form-control mb-3" placeholder="Last name here..." id="lastName" required>
+          <input type="text" class="form-control mb-3" placeholder="Username here..." id="username">
+          <input type="email" class="form-control mb-3" placeholder="Email here..." id="registerEmail" required>
+          <input type="text" class="form-control mb-3" placeholder="Password here..." id="registerPassword" required>
+          <button class="btn btn-outline-light w-100">Send</button>
+        </form>
+        <p class="code" id="registerInfo"></p>
       </div>
     </div>
+    <hr class="my-5">
+    <div class="row">
+      <div class="col-sm-12 col-md-2">
+        <p class="h4">Login</p>
+        <hr>
+        <p>
+          <a href="javascript:void(0)">/auth/login</a>
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="h4">cURL</p>
+        <hr>
+        <p class="code">curl --location --request POST 'http://localhost:8080/auth/login' \<br>
+          --header 'Content-Type: application/json' \<br>
+          --data-raw '{<br>
+          <span class="tab">"email": "Sincere@april.biz"</span>,<br>
+          <span class="tab">"password": "Bret@12345"</span><br>
+          }'
+        </p>
+        <p class="h4">Request</p>
+        <hr>
+        <p class="code">
+          {<br>
+            <span class="tab"><span class="key">"email"</span>: <span class="value">"Sincere@april.biz"</span></span>,<br>
+            <span class="tab"><span class="key">"password"</span>: <span class="value">"Bret@12345"</span></span><br>
+          }
+        </p>
+        <p class="h4">Response</p>
+        <hr>
+        <p class="code">
+          {<br>
+            <span class="tab text-break"><span class="key">"token"</span>: <span class="value">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJMZWFubmUiLCJsYXN0TmFtZSI6IkdyYWhhbSIsInVzZXJuYW1lIjoiQnJldCIsImVtYWlsIjoiU2luY2VyZUBhcHJpbC5iaXoiLCJpYXQiOjE2Mjk1MTY2ODIsImV4cCI6MTYyOTYwMzA4MiwiYXVkIjoiNTg2MzE3Mzg3MjQ4NDVhNmE3MzY4OTg5NzE0YTRiZDYiLCJpc3MiOiJub2RlLmF1dGgifQ.gkSinBI6_kB43mtC7TOsnbCfNDOJAphO4PU8qoJwtLk"</span></span>,<br>
+            <span class="tab"><span class="key">"user": {<br>
+              <span class="tab-inner"><span class="key">"firstName"</span>: <span class="value">"Leanne"</span>,</span><br>
+              <span class="tab-inner"><span class="key">"lastName"</span>: <span class="value">"Graham"</span>,</span><br>
+              <span class="tab-inner"><span class="key">"username"</span>: <span class="value">"Bret"</span>,</span><br>
+              <span class="tab-inner"><span class="key">"email"</span>: <span class="value">"Sincere@april.biz"</span>,</span><br>
+              <span class="tab-inner"><span class="key">"createdAt"</span>: <span class="value">"2021-08-13T14:13:59.237Z"</span>,</span><br>
+              <span class="tab-inner"><span class="key">"updatedAt"</span>: <span class="value">"2021-08-13T14:13:59.237Z"</span>,</span><br>
+              <span class="tab-inner"><span class="key">"userId"</span>: <span class="value">"58631738724845a6a7368989714a4bd6"</span></span><br>
+              <span class="tab">}</span>
+            </span><br>
+          }
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <p class="h4">Try yourself</p>
+        <hr>
+        <form id="loginForm">
+          <input type="email" class="form-control mb-3" placeholder="Email here..." id="loginEmail" required>
+          <input type="text" class="form-control mb-3" placeholder="Password here..." id="loginPassword" required>
+          <button class="btn btn-outline-light w-100">Send</button>
+        </form>
+        <p class="code" id="loginInfo"></p>
+      </div>
+    </div>
+    <hr class="my-5">
   </div>
 
-  <script src="javascripts/script.js"></script>
+  <script src="javascripts/script.js" defer></script>
 </body>
 
 </html>
