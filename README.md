@@ -1,36 +1,26 @@
-# NodeJS Services
+### A collection of simple NodeJS services
 
-> _A small collection of NodeJS services written in order to understand and learn some of the key aspects of coding server side logic for your business and learning purposes_.
+**Node Auth**
+*A simple registration and login service.*
+>- Register and user.
+>- Login using any registered user credentials.
+>- Login returns **Jsonwebtoken** and the user details. The jsonwebtoken is created based on the user credentials submitted during registration.
 
-### Included projects are
-- ### Node Auth
-	**_Description_**
-	> The basic idea of this project is to implement a simple Login/Registration process and understand how authentication works.
+**Node Fileupload**
+*A simple fileupload service.*
+>- Upload any file and store in **MongoDB**.
+>- Uses **GridFS** for uploading and reading the file from MongoDB
 
-	**_Key features_**
-	- Setting up basic Express server.
-	- Using mongoose to establish database connection [[Mongoose Documentation](https://mongoosejs.com/)].
-	- Creating a basic User model to store user information.
-	- Working with JsonWebTokens - creating, signing and verifying a jsonwebtoken.
+**Node Mail**
+*A simple mailing service.*
+>- Send emails using nodemailer as a service
 
-- ### URL Shortener
-	**_Description_**
-	> The basic idea of this project is to implement an URL shortening service similar to [Bitly](https://bitly.com/).
+**URL Shortener**
+*A simple service which shortens URLs into compact ones.*
+>- Very similar to the URL shortening done by services like Bitly or TinyURL
 
-- ### Node File upload
-	**_Description_**
-	> The basic idea of this project is to implement a file upload service to store files in MongoDB using [GridFS](https://docs.mongodb.com/manual/core/gridfs/).
+#### Tech Stack
+*My tech stack of choice for this little project was **NodeJS (Express)** with **MongoDB** for storing all the data.*
 
-	**_Key features_**
-	- Using GridFS to store uploaded file in MongoDB.
-	- Storing file metadata in separate collection.
-	- Read the file from the database using the filename generated.
-
-- ### Node Mail
-	**_Description_**
-	> The basic idea of this project is to implement an email service using [Nodemailer](https://nodemailer.com/about/) and [Email Templates](https://www.npmjs.com/package/email-templates).
-
-	**_Key features_**
-	- Setting up Nodemailer service.
-	- Creating and displaying pre-build HTML templates.
-	- Accepting custom HTML templates from user.
+#### Current Version and Future plans
+*Most of the services are pretty much ready for use. Node Mail service still needs some work and there needs to an UI which can be used to interact with all the services for better understanding and visualization.*
