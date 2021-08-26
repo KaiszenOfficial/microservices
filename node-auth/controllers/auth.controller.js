@@ -1,10 +1,12 @@
-const debug   = require("debug")("node-auth:auth-controller");
-const _       = require("lodash");
-const shortid = require("shortid");
-const config  = require("config");
+const debug            = require('debug')('node-auth:auth-controller');
+const _                = require('lodash');
+const shortid          = require('shortid');
+const config           = require('config');
+const { createAvatar } = require('@dicebear/avatars');
+const style            = require('@dicebear/avatars-initials-sprites');
 
-const User                  = require("../models/User");
-const { generateAuthToken } = require("../utils/authManager");
+const User                  = require('../models/User');
+const { generateAuthToken } = require('../utils/authManager');
 
 const login = async (req, res) => {
   const { email, password } = req.body;
@@ -13,17 +15,17 @@ const login = async (req, res) => {
     let user = await User.findOne({ email });
 
     if (_.isEmpty(user)) {
-      return res.formatter.unauthorized("Invalid credentials.", {
+      return res.formatter.unauthorized('Invalid credentials.', {
         timestamp: new Date(),
-        code: config.get("ERROR_CODES").USER_NOT_FOUND,
+        code: config.get('ERROR_CODES').USER_NOT_FOUND,
         path: req.path,
       });
     }
 
     if (!user.comparePassword(password)) {
-      return res.formatter.unauthorized("Invalid credentials.", {
+      return res.formatter.unauthorized('Invalid credentials.', {
         timestamp: new Date(),
-        code: config.get("ERROR_CODES").USER_NOT_FOUND,
+        code: config.get('ERROR_CODES').USER_NOT_FOUND,
         path: req.path,
       });
     }
@@ -41,7 +43,7 @@ const login = async (req, res) => {
     debug(error);
     return res.formatter.serverError(error.message || error.toString(), {
       timestamp: new Date(),
-      code: config.get("ERROR_CODES").INTERNAL_SERVER_ERROR,
+      code: config.get('ERROR_CODES').INTERNAL_SERVER_ERROR,
       path: req.path,
     });
   }
@@ -54,21 +56,30 @@ const register = async (req, res) => {
     let user = await User.findOne({ email });
 
     if (!_.isEmpty(user)) {
-      return res.formatter.badRequest("User already exists", {
+      return res.formatter.badRequest('User already exists', {
         timestamp: new Date(),
-        code: config.get("ERROR_CODES").DUPLICATE_USER,
+        code: config.get('ERROR_CODES').DUPLICATE_USER,
         path: req.path,
       });
     }
+
+    const svg = createAvatar(style, {
+      seed: [firstName, lastName].join(' '),
+      height: 256,
+      width: 256
+    });
+
+    const avatar = svg.replace(/\\/g,"");
 
     user = new User({
       firstName,
       lastName,
       username: _.isEmpty(username)
-        ? [firstName, shortid.generate()].join(".")
+        ? [firstName, shortid.generate()].join('.')
         : username,
       email,
       password,
+      avatar,
     });
 
     const savedUser = await user.save();
@@ -78,10 +89,10 @@ const register = async (req, res) => {
     debug(error);
     return res.formatter.serverError(error.message || error.toString(), {
       timestamp: new Date(),
-      code: config.get("ERROR_CODES").INTERNAL_SERVER_ERROR,
+      code: config.get('ERROR_CODES').INTERNAL_SERVER_ERROR,
       path: req.path,
     });
   }
 };
 
-module.exports = { login, register }
+module.exports = { login, register };

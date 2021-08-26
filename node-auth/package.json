@@ -9,6 +9,8 @@
     "dev:windows": "set DEBUG=node-auth:* & nodemon ./bin/www"
   },
   "dependencies": {
+    "@dicebear/avatars": "^4.7.4",
+    "@dicebear/avatars-initials-sprites": "^4.7.4",
     "bcrypt": "^5.0.1",
     "config": "^3.3.6",
     "cookie-parser": "~1.4.4",
